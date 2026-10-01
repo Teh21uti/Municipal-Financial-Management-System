@@ -13,6 +13,8 @@ void addSupplier(void)
 {
  printf("Adding supplier...\n");
  char id[20];
+ char name[100];
+
  printf("Enter supplier ID: ");
  fgets(id, sizeof(id), stdin);
  id[strcspn(id, "\n")] = '\0';
@@ -22,6 +24,17 @@ void addSupplier(void)
     return;
  }
  printf("You entered ID: %s\n", id);
+
+
+ printf("Enter Supplier Name: ");
+ fgets(name, sizeof(name), stdin);
+ name[strcspn(name, "\n")] = '\0';
+
+ if(strlen(name) == 0) {
+   printf("Name cannot be empty.\n");
+   return;
+ }
+ printf("You entered Name: %s\n", name);
 }
 
 void listSuppliers(void)

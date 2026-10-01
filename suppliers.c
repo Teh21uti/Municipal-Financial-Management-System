@@ -2,7 +2,7 @@
 #include "suppliers.h"
 #include <string.h>
 #define MAX_SUPPLIERS 100
-int suppliersID[MAX_SUPPLIERS];
+char suppliersID[MAX_SUPPLIERS][20];
 char suppliersName[MAX_SUPPLIERS][100];
 char suppliersEmail[MAX_SUPPLIERS][100];
 char suppliersPhone[MAX_SUPPLIERS][30];
@@ -12,15 +12,16 @@ int suppliersCount = 0;
 void addSupplier(void)
 {
  printf("Adding supplier...\n");
- int id=0;
+ char id[20];
  printf("Enter supplier ID: ");
- scanf("%d", &id);
+ fgets(id, sizeof(id), stdin);
+ id[strcspn(id, "\n")] = '\0';
 
- if(id <= 0) {
-    printf("Invalid ID, must be a positive number.\n");
+ if(strlen(id) == 0) {
+    printf("Invalid, ID cannot be empty.\n");
     return;
  }
- printf("You entered ID: %d\n", id);
+ printf("You entered ID: %s\n", id);
 }
 
 void listSuppliers(void)

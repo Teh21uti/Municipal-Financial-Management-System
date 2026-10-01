@@ -11,6 +11,10 @@ int suppliersCount = 0;
 
 void addSupplier(void)
 {
+   if(suppliersCount >= MAX_SUPPLIERS) {
+      printf("Cannot add more suppliers. Maximum limit reached.\n");
+      return;
+   }
  printf("Adding supplier...\n");
  char id[20];
  char name[100];
@@ -26,6 +30,12 @@ void addSupplier(void)
          printf("Invalid, ID cannot be empty.\n");
            return;
  }
+      for(int i = 0; i < suppliersCount; i++) {
+         if(strcmp(suppliersID[i], id) == 0) {
+            printf("Supplier ID already exists. Please enter a unique ID.\n");
+            return;
+         }
+      }
              printf("You entered ID: %s\n", id);
 
 
@@ -68,6 +78,16 @@ void addSupplier(void)
             return;
    }
           printf("You entered Town: %s\n", town);
+          
+          strcpy(suppliersID[suppliersCount], id);
+          strcpy(suppliersName[suppliersCount], name);
+          strcpy(suppliersEmail[suppliersCount], email);
+          strcpy(suppliersPhone[suppliersCount], phone);
+          strcpy(suppliersTowns[suppliersCount], town);
+
+          suppliersCount++;
+
+          printf("Supplier added successfully!\n");
 }
 
 void listSuppliers(void)

@@ -92,8 +92,24 @@ void addSupplier(void)
 
 void listSuppliers(void)
 {
+   
  printf("Listing suppliers...\n");
+
+ if(suppliersCount == 0) {
+   printf("No suppliers to list.\n");
+ } else {
+   for(int i = 0; i < suppliersCount; i++) {
+      printf("Supplier %d:\n", i + 1);
+      printf("ID: %s\n", suppliersID[i]);
+      printf("Name: %s\n", suppliersName[i]);
+      printf("Email: %s\n", suppliersEmail[i]);
+      printf("Phone: %s\n", suppliersPhone[i]);
+      printf("Town: %s\n", suppliersTowns[i]);
+   }
 }
+  printf("Total suppliers: %d\n", suppliersCount);
+ 
+ }
 
 void searchSupplier(void)
 {

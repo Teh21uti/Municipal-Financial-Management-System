@@ -145,3 +145,39 @@ void searchSupplier(void)
 
    }
 }
+
+void supplierMenu(void)
+{
+   char choice[10];
+   
+   do {
+      printf("========Supplier Management Menu=======\n");
+      printf("1. Add Supplier\n");
+      printf("2. List Suppliers\n");
+      printf("3. Search Supplier\n");
+      printf("4. Exit, Back To Main Menu\n");
+      printf("=======================================\n");
+      printf("Enter your Choice: ");
+      fgets(choice, sizeof(choice), stdin);
+      choice[strcspn(choice, "\n")] = '\0';
+
+      switch(choice[0]) {
+      case '1':
+         addSupplier();
+         break;
+         case '2':
+         listSuppliers();
+         break;
+         case '3':
+         searchSupplier();
+         break;
+         case '4':
+         printf("Exiting Supplier Management Menu.\n");
+         break;
+         default:
+         printf("Invalid choice. Please choose between 1 and 4.\n");
+   }
+   } while(strcmp(choice, "4") != 0);
+
+   
+}

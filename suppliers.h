@@ -3,4 +3,5 @@
 void addSupplier(void);
 void listSuppliers(void);
 void searchSupplier(void);
+void supplierMenu(void);
 #endif 

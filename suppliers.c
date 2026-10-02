@@ -15,7 +15,7 @@ void addSupplier(void)
       printf("Cannot add more suppliers. Maximum limit reached.\n");
       return;
    }
- printf("Adding supplier...\n");
+ 
  char id[20];
  char name[100];
  char email[100];
@@ -36,7 +36,7 @@ void addSupplier(void)
             return;
          }
       }
-             printf("You entered ID: %s\n", id);
+             
 
 
          printf("Enter Supplier Name: ");
@@ -47,7 +47,7 @@ void addSupplier(void)
            printf("Name cannot be empty.\n");
              return;
  }
-           printf("You entered Name: %s\n", name);
+           
 
    printf("Enter Supplier Email: ");
       fgets(email, sizeof(email), stdin);
@@ -57,7 +57,7 @@ void addSupplier(void)
       printf("Email cannot be empty.\n");
             return;
    }
-          printf("You entered Email: %s\n", email);
+          
 
    printf("Enter Supplier Phone: ");
       fgets(phone, sizeof(phone), stdin);
@@ -67,7 +67,7 @@ void addSupplier(void)
       printf("Phone cannot be empty.\n");
             return;
    }
-          printf("You entered Phone: %s\n", phone);
+          
 
    printf("Enter Supplier Town: ");
       fgets(town, sizeof(town), stdin);
@@ -77,7 +77,7 @@ void addSupplier(void)
       printf("Town cannot be empty.\n");
             return;
    }
-          printf("You entered Town: %s\n", town);
+         
           
           strcpy(suppliersID[suppliersCount], id);
           strcpy(suppliersName[suppliersCount], name);
@@ -93,7 +93,7 @@ void addSupplier(void)
 void listSuppliers(void)
 {
    
- printf("Listing suppliers...\n");
+ 
 
  if(suppliersCount == 0) {
    printf("No suppliers to list.\n");
@@ -115,7 +115,7 @@ void searchSupplier(void)
 {
    char searchName[100];
    int found = 0;
- printf("Searching supplier...\n");
+ 
 
  printf("Enter supplier name to search: ");
  fgets(searchName, sizeof(searchName), stdin);

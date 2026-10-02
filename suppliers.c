@@ -113,5 +113,35 @@ void listSuppliers(void)
 
 void searchSupplier(void)
 {
+   char searchName[100];
+   int found = 0;
  printf("Searching supplier...\n");
+
+ printf("Enter supplier name to search: ");
+ fgets(searchName, sizeof(searchName), stdin);
+ searchName[strcspn(searchName, "\n")] = '\0';
+
+ if(strlen(searchName) == 0) {
+   printf("Search name cannot be empty.\n");
+   return;
+
+ }
+
+ for(int i = 0; i < suppliersCount; i++) {
+   if(strcmp(suppliersName[i], searchName) == 0) {
+      printf("Supplier found:  \n");
+      found = 1;
+      printf("ID: %s\n", suppliersID[i]);
+      printf("Name: %s\n", suppliersName[i]);
+      printf("Email: %s\n", suppliersEmail[i]);
+      printf("Phone: %s\n", suppliersPhone[i]);
+      printf("Town: %s\n", suppliersTowns[i]);
+
+   } 
+    
+ }
+ if(found == 0) {
+      printf("Supplier Not Found\n");
+
+   }
 }

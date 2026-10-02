@@ -1,8 +1,59 @@
 #include <stdio.h>
+#include <string.h>
 #include "suppliers.h"
+
+void DisplayMenu(void)
+{
+    printf("=========Municipal Financial Management System=========\n");
+ printf("=======================================================\n");
+ printf(" 1. Employee Management\n");
+ printf(" 2. Budget Management\n");
+ printf(" 3. Supplier Management\n");
+ printf(" 4. Asset Management\n");
+ printf(" 5. Reports\n");
+ printf(" 6. Exit\n");
+ printf("=======================================================\n");
+ printf("\n");
+ printf("Enter your choice: ");
+}
+
+
+
 int main(void)
 {
- printf("=========Municipal Financial Management System=========\n");
- supplierMenu();
+ char choice[10];
+
+ do {
+    DisplayMenu();
+    fgets(choice, sizeof(choice), stdin);
+    choice[strcspn(choice, "\n")] = '\0';
+
+
+    switch(choice[0]) {
+        case '1':
+            printf("Employee Management coming soon.\n");
+            break;
+        case '2':
+            printf("Budget Management coming soon.\n");
+            break;
+            case '3':
+            supplierMenu();
+            break;
+            case '4':
+            printf("Asset Management coming soon.\n");
+            break;
+            case '5':
+            printf("Reports coming soon.\n");
+            break;
+            case '6':
+            printf("MFMS compiled by NUST students, Tehuti Billawer, Henok Josef, Ashipala Richard, Anton Ngondo, Eva Niimbwele and Robert Gaingob, Thank you!\n");
+            break;
+            default:
+            printf("Invalid choice. Please try again.\n");
+
+    }    
+ }  while(strcmp(choice, "6") != 0);
+                
+ 
  return 0;
 }

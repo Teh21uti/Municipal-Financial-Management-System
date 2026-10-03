@@ -2,24 +2,48 @@
 #include <string.h>
 #include "employees.h"
 
-/*
-   FUNCTION PROTOTYPES
-   The main functions are listed in employees.h */
-int empReadChoice();
+/* EMPLOYEE DATA */
+static char empIds[100][10];
+static char empNames[100][50];
+static char empDepartments[100][30];
+static float empBasic[100];
+static float empHousing[100];
+static float empTransport[100];
+static int employeeCount = 0;
+
+/* FUNCTION PROTOTYPE */
+void empClearLine();
 float empReadAmount();
 void empShowEmployee(int i, char ids[][10], char names[][50], char departments[][30],
                      float basic[], float housing[], float transport[]);
 
-/* ==================================================================
-   EMPLOYEE MENU
-   ================================================================== */
+/*
+   FUNCTIONS CALLED BY main.c AND reports.c*/
 
-int employeeMenu(char ids[][10], char names[][50], char departments[][30],
-                 float basic[], float housing[], float transport[], int count)
+void employeeMenu(void)
 {
-    int choice = 0;
+    employeeCount = employeeMenuRun(empIds, empNames, empDepartments,
+                                    empBasic, empHousing, empTransport,
+                                    employeeCount);
+}
 
-    while (choice != 5)
+void employeeReport(void)
+{
+    displayEmployeeReport(empBasic, empHousing, empTransport, employeeCount);
+}
+
+/* 
+   EMPLOYEE MENU
+*/
+
+int employeeMenuRun(char ids[][10], char names[][50], char departments[][30],
+                    float basic[], float housing[], float transport[], int count)
+{
+    char choice[50];
+
+    strcpy(choice, "0");
+
+    while (strcmp(choice, "5") != 0)
     {
         printf("\n========================================\n");
         printf("          EMPLOYEE MANAGEMENT\n");
@@ -30,61 +54,72 @@ int employeeMenu(char ids[][10], char names[][50], char departments[][30],
         printf("4. Calculate salary\n");
         printf("5. Back to main menu\n");
         printf("Enter your choice: ");
-        choice = empReadChoice();
 
-        switch (choice)
+        /* fgets reads the whole line */
+        fgets(choice, sizeof(choice), stdin);
+        choice[strcspn(choice, "\n")] = '\0';
+
+        if (strlen(choice) != 1)
         {
-            case 1:
-                count = addEmployee(ids, names, departments, basic, housing, transport, count);
-                break;
-            case 2:
-                displayEmployees(ids, names, departments, basic, housing, transport, count);
-                break;
-            case 3:
-                findEmployee(ids, names, departments, basic, housing, transport, count);
-                break;
-            case 4:
-                displaySalaryInfo(ids, names, basic, housing, transport, count);
-                break;
-            case 5:
-                break;
-            default:
-                printf("Invalid choice. Please enter a number from 1 to 5.\n");
+            printf("Invalid choice. Please enter a number from 1 to 5.\n");
+        }
+        else
+        {
+            switch (choice[0])
+            {
+                case '1':
+                    count = addEmployee(ids, names, departments, basic, housing, transport, count);
+                    break;
+                case '2':
+                    displayEmployees(ids, names, departments, basic, housing, transport, count);
+                    break;
+                case '3':
+                    findEmployee(ids, names, departments, basic, housing, transport, count);
+                    break;
+                case '4':
+                    displaySalaryInfo(ids, names, basic, housing, transport, count);
+                    break;
+                case '5':
+                    break;
+                default:
+                    printf("Invalid choice. Please enter a number from 1 to 5.\n");
+            }
         }
     }
 
     return count;
 }
 
-/* 
-   INPUT HELPERS*/
+/*  INPUT HELPERS */
 
-/* Reads a menu choice. Returns -1 if the user did not type a whole number. */
-int empReadChoice()
+
+void empClearLine()
 {
-    int choice;
-    char BadText[50];
+    char junk[50];
 
-    if (scanf("%d", &choice) != 1)
-    {
-        scanf("%49s", BadText);    /* remove the wrong text from the input */
-        return -1;
-    }
-    return choice;
+    fgets(junk, sizeof(junk), stdin);
 }
 
-/* Keeps asking until the user enters a number that is not negative. */
+/* Keeps asking until the user enters
 float empReadAmount()
 {
     float amount = 0;
-    char BadText[50];
+    char junk[50];
+    int result;
     int valid = 0;
 
     while (valid == 0)
     {
-        if (scanf("%f", &amount) != 1)
+        result = scanf("%f", &amount);
+
+        if (result != 1)
         {
-            scanf("%49s", BadText);    /* remove the wrong text from the input */
+            scanf("%49s", junk);    /* remove the wrong text from the input */
+        }
+        empClearLine();             /* remove the Enter key left behind */
+
+        if (result != 1)
+        {
             printf("That is not a number. Please try again: ");
         }
         else if (amount < 0)
@@ -99,9 +134,8 @@ float empReadAmount()
     return amount;
 }
 
-/* ==================================================================
-   ADD, DISPLAY AND SEARCH
-   ================================================================== */
+/*
+   ADD, DISPLAY AND SEARCH*/
 
 int addEmployee(char ids[][10], char names[][50], char departments[][30],
                 float basic[], float housing[], float transport[], int count)
@@ -122,6 +156,7 @@ int addEmployee(char ids[][10], char names[][50], char departments[][30],
     {
         printf("Employee ID (3 to 9 characters, e.g. E001): ");
         scanf("%9s", id);
+        empClearLine();
 
         if (strlen(id) < 3)
         {
@@ -140,9 +175,11 @@ int addEmployee(char ids[][10], char names[][50], char departments[][30],
 
     printf("Full name: ");
     scanf(" %49[^\n]", names[count]);
+    empClearLine();
 
     printf("Department: ");
     scanf(" %29[^\n]", departments[count]);
+    empClearLine();
 
     printf("Basic salary (N$): ");
     basic[count] = empReadAmount();
@@ -155,7 +192,7 @@ int addEmployee(char ids[][10], char names[][50], char departments[][30],
 
     printf("\nEmployee added successfully.\n");
 
-    /* A function cannot change the caller's variable, so we return the new count. */
+    
     return count + 1;
 }
 
@@ -208,6 +245,7 @@ void findEmployee(char ids[][10], char names[][50], char departments[][30],
 
     printf("Enter Employee ID: ");
     scanf("%9s", id);
+    empClearLine();
 
     index = searchEmployee(id, ids, count);
 
@@ -263,6 +301,7 @@ void displaySalaryInfo(char ids[][10], char names[][50],
 
     printf("Enter Employee ID: ");
     scanf("%9s", id);
+    empClearLine();
 
     index = searchEmployee(id, ids, count);
 
@@ -281,8 +320,9 @@ void displaySalaryInfo(char ids[][10], char names[][50],
     printf("Gross salary : N$%.2f\n", gross);
 }
 
-/*
-   EMPLOYEE REPORT*/
+/* ==================================================================
+   EMPLOYEE REPORT
+   ================================================================== */
 
 void displayEmployeeReport(float basic[], float housing[], float transport[], int count)
 {

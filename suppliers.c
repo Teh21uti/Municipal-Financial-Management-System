@@ -2,6 +2,8 @@
 #include "suppliers.h"
 #include <string.h>
 #define MAX_SUPPLIERS 100
+//parallel arrays, they are parallel because the same row number is used to store the same supplier's info across the different arrays.
+//2D arrays, These arrays are also 2D arrays because they store mutliple strings, the first part of the array represents the total number of suppliers, while the second part represents the maximum length of each string.
 char suppliersID[MAX_SUPPLIERS][20];
 char suppliersName[MAX_SUPPLIERS][100];
 char suppliersEmail[MAX_SUPPLIERS][100];
@@ -9,6 +11,8 @@ char suppliersPhone[MAX_SUPPLIERS][30];
 char suppliersTowns[MAX_SUPPLIERS][50];
 int suppliersCount = 0;
 
+
+//The following function is used to add a new supplier to the system. prompting the user for supplier details.
 void addSupplier(void)
 {
    if(suppliersCount >= MAX_SUPPLIERS) {
@@ -90,6 +94,8 @@ void addSupplier(void)
           printf("Supplier added successfully!\n");
 }
 
+
+//this following function is used to list ALL the suppliers within the system, then outputting their details.
 void listSuppliers(void)
 {
    
@@ -111,6 +117,8 @@ void listSuppliers(void)
  
  }
 
+
+ //This function is used to search for a SPECIFIC supplier within the system, then outputting the supplier or not if its not in the system.
 void searchSupplier(void)
 {
    char searchName[100];
@@ -146,6 +154,7 @@ void searchSupplier(void)
    }
 }
 
+//This function is used to display the supplier management menu, once it it clicked in the main MFMS menu.
 void supplierMenu(void)
 {
    char choice[10];

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "suppliers.h"
+#include "employees.h"
 
 void DisplayMenu(void)
 {

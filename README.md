@@ -1,18 +1,29 @@
- Individual Contribution: Tehuti, Supplier Management & Main Menu
+ Municipal Financial Management System (MFMS)
+ 
+Course: PAP521S — Programming in Practice
 
-Student Number: 225000652
-Main Responsibility: Supplier Management module and the main menu (main.c)
+Project: Project A — Foundation System
 
-Files: 'suppliers.c', 'suppliers.h', main.c'
+Due Date: 04 October 2026
 
-Supplier module: stores up to 100 suppliers (ID, name, email, phone, town) in arrays. supplierMenu() lets the user add, list or search suppliers. 'addSupplier()' validates every field. 'listSuppliers()' shows all suppliers and the total. 'searchSupplier()' finds suppliers by exact name.
+Group Members:
+#	Name,	Student Number,	Role
+1.		Employee Management
+2.     Budget Management
+3.     Tehuti Billawer, 225000652,	'Supplier Management/Intergation and Main Menu'
+4.		Asset Management
+5.		Reports
+6.     Testing & Documentation
 
-Main menu: 'displayMenu()' and 'main()' repeat the menu until the user exits. Option 3 opens the supplier menu, and the other options are placeholders until those modules are integrated by my fellow collueges.
+Project Description:
 
-C concepts used: 2D character arrays, string functions ('strlen', 'strcmp', 'strcpy', 'strcspn'), 'do-while' and 'for' loops, 'switch', functions and header files.
+An application that manages municipal employees, supplies, assets, budgets and produces summary reports. 
 
-Testing: added, listed and searched suppliers; confirmed empty fields, empty search, duplicate IDs and invalid menu choices are rejected.
-
-GitHub: frequent commits to 'suppliers.c', 'suppliers.h' and 'main.c' over several sessions.
+System Features
+Employee Management — add, display, search employees; calculate net salary
+Budget Management — capture departmental budgets, expenditure, remaining balance, over-budget warnings
+Supplier Management — add, display, search suppliers (uses string functions)
+Asset Management — add, display, search municipal assets
+Reports — summary reports across all modules
 
 Build: 'gcc -std=c99 -Wall -Wextra -pedantic main.c suppliers.c -o myapp'

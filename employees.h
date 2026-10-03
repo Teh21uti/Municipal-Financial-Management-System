@@ -1,19 +1,14 @@
-/* employees.h - list of the functions in employees.c
 
-   The employee data is stored in arrays
 
-       char  ids[100][10];
-       char  names[100][50];
-       char  departments[100][30];
-       float basic[100];
-       float housing[100];
-       float transport[100];
-       int   employeeCount = 0;
-*/
+/* ---- Functions for main.c and reports.c ---- */
 
-/* The employee menu. Returns the new number of employees. */
-int employeeMenu(char ids[][10], char names[][50], char departments[][30],
-                 float basic[], float housing[], float transport[], int count);
+
+void employeeMenu(void);
+void employeeReport(void);
+
+
+int employeeMenuRun(char ids[][10], char names[][50], char departments[][30],
+                    float basic[], float housing[], float transport[], int count);
 
 /* Adds one employee. Returns the new number of employees. */
 int addEmployee(char ids[][10], char names[][50], char departments[][30],
@@ -36,5 +31,5 @@ int searchEmployee(char id[], char ids[][10], int size);
 /* Gross salary = basic + housing + transport */
 float calculateSalary(float basic, float housing, float transport);
 
-/* Employee report: total, average, highest and lowest salary. */
+/* Employee report on the arrays it is given. */
 void displayEmployeeReport(float basic[], float housing[], float transport[], int count);

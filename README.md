@@ -21,9 +21,13 @@ An application that manages municipal employees, supplies, assets, budgets and p
 
 System Features
 Employee Management: add, display, search employees; calculate net salary
+
 Budget Management:     capture departmental budgets, expenditure, remaining balance, over-budget warnings
+
 Supplier Management: add, display, search suppliers (uses string functions)
+
 Asset Management: add, display, search municipal assets
+
 Reports: summary reports across all modules
 
 Build: 'gcc -std=c99 -Wall -Wextra -pedantic main.c suppliers.c -o myapp'

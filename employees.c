@@ -3,13 +3,13 @@
 #include "employees.h"
 
 /* EMPLOYEE DATA */
-static char empIds[100][10];
-static char empNames[100][50];
-static char empDepartments[100][30];
-static float empBasic[100];
-static float empHousing[100];
-static float empTransport[100];
-static int employeeCount = 0;
+char empIds[100][10];
+char empNames[100][50];
+char empDepartments[100][30];
+float empBasic[100];
+float empHousing[100];
+float empTransport[100];
+int employeeCount = 0;
 
 /* FUNCTION PROTOTYPE */
 void empClearLine();
@@ -100,7 +100,7 @@ void empClearLine()
     fgets(junk, sizeof(junk), stdin);
 }
 
-/* Keeps asking until the user enters
+/* Keeps asking until the user enters a number that is not negative. */
 float empReadAmount()
 {
     float amount = 0;

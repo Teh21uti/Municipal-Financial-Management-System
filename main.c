@@ -4,6 +4,7 @@
 #include "employees.h"
 #include "assets.h"
 #include "budget.h"
+#include "reports.h"
 
 void DisplayMenu(void)
 {
@@ -47,8 +48,9 @@ int main(void)
             assetMenu();
             break;
             case '5':
-            printf("Reports coming soon.\n");
-            break;
+            reportsMenu();
+       fgets(choice, sizeof(choice), stdin);  /* clears the Enter left by their scanf */
+       break;
             case '6':
             printf("MFMS compiled by NUST students, Tehuti Billawer, Henok Josef, Ashipala Richard, Anton Ngondo, Eva Niimbwele and Robert Gaingob, Thank you!\n");
             break;

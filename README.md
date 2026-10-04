@@ -10,10 +10,10 @@ Group Members:
 #	Name,	Student Number,	Role
 1.		Henok Josef, 225143402, Employee Management
 2.      Richard Ashipala, 226092321,   Budget Management
-3.     Tehuti Billawer, 225000652,	'Supplier Management/Intergation and Main Menu'
+3.     Tehuti Billawer, 225000652,	'Supplier Management/Intergation and Main Menu'/ Majority of Testing & Documentation
 4.		 Anton Ngondo, 226091309, Asset Management
 5.		  Eva Niimbwele, 226051374, Reports
-6.     Testing & Documentation
+6.     Robert, 226135934, Testing & Documentation
 
 Project Description:
 

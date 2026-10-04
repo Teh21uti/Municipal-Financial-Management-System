@@ -8,8 +8,8 @@ Due Date: 04 October 2026
 
 Group Members:
 #	Name,	Student Number,	Role
-1.		Employee Management
-2.     Budget Management
+1.		Henok, Employee Management
+2.      Richard Ashipala, 226092321,   Budget Management
 3.     Tehuti Billawer, 225000652,	'Supplier Management/Intergation and Main Menu'
 4.		Asset Management
 5.		Reports

@@ -2,6 +2,8 @@
 #include <string.h>
 #include "suppliers.h"
 #include "employees.h"
+#include "assets.h"
+#include "budget.h"
 
 void DisplayMenu(void)
 {
@@ -32,16 +34,17 @@ int main(void)
 
     switch(choice[0]) {
         case '1':
-            printf("Employee Management coming soon.\n");
+            employeeMenu();
             break;
         case '2':
-            printf("Budget Management coming soon.\n");
-            break;
+            budgetMenu();
+       fgets(choice, sizeof(choice), stdin);  /* clears the Enter left by their scanf */
+       break;
             case '3':
             supplierMenu();
             break;
             case '4':
-            printf("Asset Management coming soon.\n");
+            assetMenu();
             break;
             case '5':
             printf("Reports coming soon.\n");

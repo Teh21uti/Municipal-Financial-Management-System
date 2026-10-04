@@ -8,11 +8,11 @@ Due Date: 04 October 2026
 
 Group Members:
 #	Name,	Student Number,	Role
-1.		Henok, Employee Management
+1.		Henok Josef, 225143402, Employee Management
 2.      Richard Ashipala, 226092321,   Budget Management
 3.     Tehuti Billawer, 225000652,	'Supplier Management/Intergation and Main Menu'
-4.		Asset Management
-5.		Reports
+4.		 Anton Ngondo, 226091309, Asset Management
+5.		  Eva Niimbwele, 226051374, Reports
 6.     Testing & Documentation
 
 Project Description:

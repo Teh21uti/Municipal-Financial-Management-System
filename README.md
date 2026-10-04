@@ -30,4 +30,4 @@ Asset Management: add, display, search municipal assets
 
 Reports: summary reports across all modules
 
-Build: 'gcc -std=c99 -Wall -Wextra -pedantic main.c suppliers.c -o myapp'
+Build: '   gcc -std=c99 -Wall -Wextra -pedantic main.c employees.c suppliers.c assets.c budget.c -o myapp'
